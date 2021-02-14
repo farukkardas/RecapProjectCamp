@@ -1,67 +1,75 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using Business.Abstract;
+﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 using Entities.DTOs;
+using Core.Utilities.Results;
+using Business.Constants;
 
 namespace Business.Concrete
 {
-    public class CarManager:ICarService
+    public class CarManager : ICarService
     {
-        ICarDal  _carDal;
+        ICarDal _carDal;
 
+        //CarManager nesnesi oluşturulduğunda, ICarDal referansı versin diye
         public CarManager(ICarDal carDal)
         {
             _carDal = carDal;
         }
-
-
-        public List<Car> GetAll()
+        public IResult Add(Car car)
         {
-            return _carDal.GetAll();
-        }
-
-        public List<Car> GetCarByBrandId(int id)
-        {
-            return _carDal.GetAll(p => p.BrandId == id).ToList();
-        }
-
-        public List<Car> GetCarsByColorId(int id)
-        {
-            return _carDal.GetAll(p => p.ColorId == id).ToList();
-        }
-
-        public List<ProductDetailDTO> GetProductDetails()
-        {
-            return _carDal.GetProductDetails();
-        }
-
-        public void Add(Car car)
-        {
-            if (car.CarName.Length >= 2 && car.DailyPrice > 0)
+            if (car.Description.Length >= 2 && car.DailyPrice > 0)
             {
                 _carDal.Add(car);
+                return new SuccessResult(Messages.CarAdded);
             }
-
             else
             {
-                Console.WriteLine("Girilmek istenen araba istenilen gereksinimleri karşılamıyor.");
+                return new ErrorResult(Messages.CarDescriptionInvalid);
             }
-
         }
 
-        public void Delete(Car car)
+        public IResult Delete(Car car)
         {
             _carDal.Delete(car);
+            return new SuccessResult(Messages.CarDeleted);
         }
 
-        public void Update(Car car)
+        public IDataResult<List<Car>> GetAll()
+        {
+            //ICarDal interfacesindeki GetAll metodunu kullanabilmek için 
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+        }
+
+        public IDataResult<List<CarDetailDTO>> GetAllCarDetails()
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetProductDetails(),Messages.CarsListed);
+        }
+
+        public IDataResult<Car> GetById(int id)
+        {
+            return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
+        }
+
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
+        }
+
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
+        {
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
+        }
+
+        public IResult Update(Car car)
         {
             _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
         }
+
     }
 }
