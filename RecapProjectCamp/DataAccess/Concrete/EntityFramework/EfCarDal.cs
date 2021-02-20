@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.Entity_Framework
 {
-    public class EFCarDal : EfEntityRepositoryBase<Car, CarBrandContext>, ICarDal
+    public class EfCarDal : EfEntityRepositoryBase<Car, CarBrandContext>, ICarDal
     {
         public List<CarDetailDTO> GetProductDetails()
         {

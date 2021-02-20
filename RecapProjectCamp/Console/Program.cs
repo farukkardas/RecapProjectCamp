@@ -12,9 +12,9 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager = new CarManager(new EFCarDal());
-            ColorManager colorManager = new ColorManager(new EFColorDal());
-            BrandManager brandManager = new BrandManager(new EFBrandDal());
+            CarManager carManager = new CarManager(new EfCarDal());
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
 
             
         }

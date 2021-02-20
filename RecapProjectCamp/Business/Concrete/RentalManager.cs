@@ -7,6 +7,9 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Utilities.Results.Concrete;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspect.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -18,7 +21,7 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var carAvaliable = CheckReturnDate(rental.CarId);

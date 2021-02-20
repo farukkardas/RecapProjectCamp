@@ -1,9 +1,9 @@
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\bin\Debug\netstandard2.0\Core.deps.json
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\bin\Debug\netstandard2.0\Core.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\bin\Debug\netstandard2.0\Core.pdb
-D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.AssemblyInfoInputs.cache
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.AssemblyInfo.cs
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.csproj.CoreCompileInputs.cache
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.pdb
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Core\obj\Debug\netstandard2.0\Core.csprojAssemblyReference.cache
