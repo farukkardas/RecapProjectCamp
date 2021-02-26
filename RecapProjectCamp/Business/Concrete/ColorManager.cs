@@ -25,7 +25,7 @@ namespace Business.Concrete
             _colorDal.Add(color);
             return new SuccessResult();
         }
-
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Delete(Color color)
         {
             _colorDal.Delete(color);
@@ -41,7 +41,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<Color>(_colorDal.Get(c => c.Id == id));
         }
-
+        [ValidationAspect(typeof(ColorValidator))]
         public IResult Update(Color color)
         {
              _colorDal.Update(color);

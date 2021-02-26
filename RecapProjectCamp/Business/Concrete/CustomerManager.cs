@@ -27,7 +27,7 @@ namespace Business.Concrete
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
-
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
@@ -51,7 +51,7 @@ namespace Business.Concrete
             var result = _customerDal.Get(c => c.Id == id);
             return new SuccessDataResult<Customer>(result);
         }
-
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);

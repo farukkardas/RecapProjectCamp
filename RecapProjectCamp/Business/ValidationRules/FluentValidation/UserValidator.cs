@@ -26,7 +26,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.Password).NotEmpty().WithMessage("Şifre boş bırakılamaz!");
             RuleFor(p => p.Password).MinimumLength(6).WithMessage("Şifre en az 6 karakterli olabilir");
             RuleFor(p => p.Password).MaximumLength(49).WithMessage("Şifre maksimum 49 karakter olabilir");
-            
+
         }
 
         private bool IsEmailUnique(string arg)
@@ -36,13 +36,10 @@ namespace Business.ValidationRules.FluentValidation
             var result = context.Users
                 .Where(p => p.Email.ToLower() == arg.ToLower())
                 .SingleOrDefault();
-           
+
             if (result == null)
                 return true;
-            else
-            {
-                return false;
-            }
+            return false;
         }
     }
 }
