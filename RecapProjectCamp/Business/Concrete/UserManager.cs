@@ -51,5 +51,15 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
+
+        public User GetByMail(string email)
+        {
+            return _userDal.Get(u => u.Email == email);
+        }
+
+        public List<OperationClaim> GetClaims(User user)
+        {
+            return _userDal.GetClaims(user);
+        }
     }
 }

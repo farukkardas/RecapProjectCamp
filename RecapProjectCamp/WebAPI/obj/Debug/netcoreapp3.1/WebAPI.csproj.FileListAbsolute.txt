@@ -71,3 +71,4 @@ D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCam
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\WebAPI\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\WebAPI\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\WebAPI\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\WebAPI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

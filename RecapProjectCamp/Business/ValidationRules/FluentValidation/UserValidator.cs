@@ -23,9 +23,7 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(p => p.Email).MaximumLength(299).WithMessage("Email en fazla 300 karakter olabilir!");
             RuleFor(p => p.Email).MinimumLength(10).WithMessage("Email minimum 10 karakter olabilir!");
             RuleFor(p => p.Email).Must(IsEmailUnique).WithMessage("Bu emaile kayıtlı kullanıcı bulunuyor!");
-            RuleFor(p => p.Password).NotEmpty().WithMessage("Şifre boş bırakılamaz!");
-            RuleFor(p => p.Password).MinimumLength(6).WithMessage("Şifre en az 6 karakterli olabilir");
-            RuleFor(p => p.Password).MaximumLength(49).WithMessage("Şifre maksimum 49 karakter olabilir");
+
 
         }
 

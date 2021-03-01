@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using Business.BusinessAspects;
 using Entities.DTOs;
 using Core.Utilities.Results;
 using Business.Constants;
@@ -23,6 +24,7 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+        [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         public IResult Add(Car car)
         {
@@ -46,12 +48,12 @@ namespace Business.Concrete
         public IDataResult<List<Car>> GetAll()
         {
             //ICarDal interfacesindeki GetAll metodunu kullanabilmek için 
-            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
         public IDataResult<List<CarDetailDTO>> GetAllCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetProductDetails(),Messages.CarsListed);
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetProductDetails(), Messages.CarsListed);
         }
 
         public IDataResult<Car> GetById(int id)

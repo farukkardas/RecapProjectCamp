@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  CompanyName = c.CompanyName,
                                  Email = u.Email,
-                                 Password = u.Password
+                                 Password = u.PasswordHash.ToString()
                              };
                 return result.ToList();
             }

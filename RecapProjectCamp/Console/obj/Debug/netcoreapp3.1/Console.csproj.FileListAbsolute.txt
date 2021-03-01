@@ -65,3 +65,9 @@ D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCam
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Autofac.Extras.DynamicProxy.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Castle.Core.dll
 D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\FluentValidation.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Abstractions.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.WebUtilities.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.Extensions.ObjectPool.dll
+D:\Development\VisualStudio\C#\Visual Studio C#\RecapProjectCamp\RecapProjectCamp\Console\bin\Debug\netcoreapp3.1\Microsoft.Net.Http.Headers.dll
