@@ -10,6 +10,7 @@ using System.Text;
 using Core.Utilities.Results.Concrete;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Validation;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -22,6 +23,7 @@ namespace Business.Concrete
             _rentalDal = rentalDal;
         }
         [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
         public IResult Add(Rental rental)
         {
             var carAvaliable = CheckReturnDate(rental.CarId);
@@ -31,6 +33,22 @@ namespace Business.Concrete
             }
             _rentalDal.Add(rental);
             return new SuccessResult(carAvaliable.Message);
+        }
+
+        [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
+        public IResult Update(Rental rental)
+        {
+            _rentalDal.Update(rental);
+            return new SuccessResult();
+        }
+
+        [ValidationAspect(typeof(RentalValidator))]
+        [CacheRemoveAspect("IRentalService.Get")]
+        public IResult Delete(Rental rental)
+        {
+            _rentalDal.Delete(rental);
+            return new SuccessResult();
         }
 
         //ReturnDate'i ==null denedim ancak bir türlü olmadı, hata verdi
@@ -44,35 +62,26 @@ namespace Business.Concrete
             }
             return new SuccessResult(Messages.CarRented);
         }
-        [ValidationAspect(typeof(RentalValidator))]
-        public IResult Delete(Rental rental)
-        {
-            _rentalDal.Delete(rental);
-            return new SuccessResult();
-        }
+       
 
+        [CacheAspect(10)]
         public IDataResult<List<Rental>> GetAll()
         {
             var result = _rentalDal.GetAll();
             return new SuccessDataResult<List<Rental>>(result);
         }
-
+        [CacheAspect(10)]
         public IDataResult<List<RentalDetailDTO>> GetAllRentalDetails()
         {
             var result = _rentalDal.GetAllRentalDetails();
             return new SuccessDataResult<List<RentalDetailDTO>>(result);
         }
-
+        [CacheAspect(10)]
         public IDataResult<Rental> GetById(int id)
         {
             var result = _rentalDal.Get(r => r.Id == id);
             return new SuccessDataResult<Rental>(result);
         }
-        [ValidationAspect(typeof(RentalValidator))]
-        public IResult Update(Rental rental)
-        {
-            _rentalDal.Update(rental);
-            return new SuccessResult();
-        }
+      
     }
 }

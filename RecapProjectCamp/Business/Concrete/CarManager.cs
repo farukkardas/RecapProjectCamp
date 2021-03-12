@@ -12,6 +12,7 @@ using Business.Constants;
 using Core.Utilities.Results.Concrete;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Validation;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -26,6 +27,7 @@ namespace Business.Concrete
         }
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Car car)
         {
             if (car.Description.Length >= 2 && car.DailyPrice > 0)
@@ -38,13 +40,24 @@ namespace Business.Concrete
                 return new ErrorResult(Messages.CarDescriptionInvalid);
             }
         }
+        
         [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
         public IResult Delete(Car car)
         {
             _carDal.Delete(car);
             return new SuccessResult(Messages.CarDeleted);
         }
 
+        [ValidationAspect(typeof(CarValidator))]
+        [CacheRemoveAspect("IProductService.Get")]
+        public IResult Update(Car car)
+        {
+            _carDal.Update(car);
+            return new SuccessResult(Messages.CarUpdated);
+        }
+
+        [CacheAspect(10)]
         public IDataResult<List<Car>> GetAll()
         {
             //ICarDal interfacesindeki GetAll metodunu kullanabilmek için 
@@ -56,26 +69,37 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetProductDetails(), Messages.CarsListed);
         }
 
+        [CacheAspect(10)]
         public IDataResult<Car> GetById(int id)
         {
             return new SuccessDataResult<Car>(_carDal.Get(c => c.CarId == id));
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.BrandId == brandId));
         }
 
+        [CacheAspect(10)]
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId));
         }
-        [ValidationAspect(typeof(CarValidator))]
-        public IResult Update(Car car)
-        {
-            _carDal.Update(car);
-            return new SuccessResult(Messages.CarUpdated);
-        }
+      
 
+        public IResult AddTransactionalTest(Car car)
+        {
+
+            Add(car);
+            if (car.DailyPrice < 10)
+            {
+                throw new Exception("");
+            }
+
+            Add(car);
+
+            return null;
+        }
     }
 }

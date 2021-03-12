@@ -10,6 +10,7 @@ using System.Text;
 using Core.Utilities.Results.Concrete;
 using Core.Aspect.Autofac.Validation;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 
 namespace Business.Concrete
 {
@@ -22,40 +23,46 @@ namespace Business.Concrete
             _customerDal = customerDal;
         }
         [ValidationAspect(typeof(CustomerValidator))]
+        [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Add(Customer customer)
         {
             _customerDal.Add(customer);
             return new SuccessResult(Messages.CustomerAdded);
         }
         [ValidationAspect(typeof(CustomerValidator))]
+        [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Delete(Customer customer)
         {
             _customerDal.Delete(customer);
             return new SuccessResult();
         }
 
-        public IDataResult<List<Customer>> GetAll()
-        {
-            var result = _customerDal.GetAll();
-            return new SuccessDataResult<List<Customer>>(result);
-        }
-
-        public IDataResult<List<CustomerDetailDto>> GetAllCustomerDetails()
-        {
-            var result = _customerDal.GetAllCustomerDetails();
-            return new SuccessDataResult<List<CustomerDetailDto>>(result);
-        }
-
-        public IDataResult<Customer> GetById(int id)
-        {
-            var result = _customerDal.Get(c => c.Id == id);
-            return new SuccessDataResult<Customer>(result);
-        }
         [ValidationAspect(typeof(CustomerValidator))]
+        [CacheRemoveAspect("ICustomerService.Get")]
         public IResult Update(Customer customer)
         {
             _customerDal.Update(customer);
             return new SuccessResult();
         }
+
+        [CacheAspect(10)]
+        public IDataResult<List<Customer>> GetAll()
+        {
+            var result = _customerDal.GetAll();
+            return new SuccessDataResult<List<Customer>>(result);
+        }
+        [CacheAspect(10)]
+        public IDataResult<List<CustomerDetailDto>> GetAllCustomerDetails()
+        {
+            var result = _customerDal.GetAllCustomerDetails();
+            return new SuccessDataResult<List<CustomerDetailDto>>(result);
+        }
+        [CacheAspect(10)]
+        public IDataResult<Customer> GetById(int id)
+        {
+            var result = _customerDal.Get(c => c.Id == id);
+            return new SuccessDataResult<Customer>(result);
+        }
+      
     }
 }
