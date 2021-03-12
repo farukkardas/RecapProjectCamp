@@ -54,8 +54,8 @@ namespace Business.Concrete
         [CacheAspect(10)]
         public IDataResult<List<CustomerDetailDto>> GetAllCustomerDetails()
         {
-            var result = _customerDal.GetAllCustomerDetails();
-            return new SuccessDataResult<List<CustomerDetailDto>>(result);
+            return new SuccessDataResult<List<CustomerDetailDto>>(_customerDal.GetAllCustomerDetails(),
+                Messages.CustomerDetailSuccess);
         }
         [CacheAspect(10)]
         public IDataResult<Customer> GetById(int id)

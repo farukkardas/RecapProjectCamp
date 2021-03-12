@@ -20,5 +20,6 @@ namespace Business.Constants
         public static string CustomerAdded = "\nMüşteri eklendi.\n";
         public static string ImageAddFailed = "Limite ulaşıldığından resim eklenemedi";
         public static string AuthorizationDenied = "Yetki reddedildi!";
+        public static string CustomerDetailSuccess = "Müşteri detayları getirildi!";
     }
 }

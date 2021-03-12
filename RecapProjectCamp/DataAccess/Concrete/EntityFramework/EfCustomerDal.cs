@@ -17,14 +17,15 @@ namespace DataAccess.Concrete.EntityFramework
             using (CarBrandContext context = new CarBrandContext())
             {
                 var result = from c in context.Customers
-                             join u in context.Users
-                             on c.UserId equals u.Id
-                             select new CustomerDetailDto
-                             {
-                                 CompanyName = c.CompanyName,
-                                 Email = u.Email,
-                                 Password = u.PasswordHash.ToString()
-                             };
+                    join user in context.Users on c.UserId equals user.Id
+                    select new CustomerDetailDto()
+                    {
+                        UserId = c.UserId,
+                        CompanyName = c.CompanyName,
+                        FirstName = user.FirstName,
+                        LastName = user.LastName,
+                        Email = user.Email
+                    };
                 return result.ToList();
             }
         }
