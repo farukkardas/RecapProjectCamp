@@ -1,4 +1,4 @@
-﻿using Core.DataAccess.EntityFramework;
+﻿    using Core.DataAccess.EntityFramework;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -14,29 +14,30 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfRentalDal : EfEntityRepositoryBase<Rental, CarBrandContext>, IRentalDal
     {
-        public List<RentalDetailDTO> GetAllRentalDetails(Expression<Func<Rental, bool>> filter = null)
+        public List<RentalDetailDto> GetAllRentalDetails()
         {
             using (CarBrandContext context = new CarBrandContext())
             {
-                var result = from rental in context.Rentals
-                    join car in context.Cars on rental.CarId equals car.CarId
-                    join customer in context.Customers on rental.CustomerId equals customer.UserId
-                    join user in context.Users on customer.UserId equals user.Id
-                    join brand in context.Brands on car.BrandId equals brand.Id
-                    select new RentalDetailDTO()
+                var result = from r in context.Rentals
+                    join c in context.Cars
+                        on r.CarId equals c.CarId
+                    join b in context.Brands
+                        on c.BrandId equals b.Id
+                    join cus in context.Customers
+                        on r.CustomerId equals cus.Id
+                    join u in context.Users
+                        on cus.UserId equals u.Id
+                    select new RentalDetailDto
                     {
-                        Id = rental.Id,
-                        CarDescription = car.Description,
-                        CarBrand = brand.BrandName,
-                        CarModel = car.ModelYear,
-                        CompanyName = customer.CompanyName,
-                        FirstName = user.FirstName,
-                        LastName = user.LastName,
-                        RentDate = rental.RentDate,
-                        ReturnDate = (DateTime)rental.ReturnDate
+                        RentalId = r.Id,
+                        BrandName = b.BrandName,
+                        FirstName = u.FirstName,
+                        LastName = u.LastName,
+                        RentDate = r.RentDate,
+                        DailyPrice = c.DailyPrice,
+                        ReturnDate = (DateTime) r.ReturnDate
                     };
                 return result.ToList();
-
             }
         }
 

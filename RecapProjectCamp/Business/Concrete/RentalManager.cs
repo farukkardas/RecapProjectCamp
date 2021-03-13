@@ -70,11 +70,11 @@ namespace Business.Concrete
             var result = _rentalDal.GetAll();
             return new SuccessDataResult<List<Rental>>(result);
         }
-        [CacheAspect(10)]
-        public IDataResult<List<RentalDetailDTO>> GetAllRentalDetails()
+        
+        public IDataResult<List<RentalDetailDto>> GetAllRentalDetails()
         {
-            var result = _rentalDal.GetAllRentalDetails();
-            return new SuccessDataResult<List<RentalDetailDTO>>(result);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails(),
+                Messages.RentalDetailSuccess);
         }
         [CacheAspect(10)]
         public IDataResult<Rental> GetById(int id)

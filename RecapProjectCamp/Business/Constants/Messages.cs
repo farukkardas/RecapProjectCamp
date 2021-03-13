@@ -21,5 +21,6 @@ namespace Business.Constants
         public static string ImageAddFailed = "Limite ulaşıldığından resim eklenemedi";
         public static string AuthorizationDenied = "Yetki reddedildi!";
         public static string CustomerDetailSuccess = "Müşteri detayları getirildi!";
+        public static string RentalDetailSuccess = "Kiralık detayları getirildi!";
     }
 }
