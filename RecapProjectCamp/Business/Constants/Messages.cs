@@ -22,5 +22,8 @@ namespace Business.Constants
         public static string AuthorizationDenied = "Yetki reddedildi!";
         public static string CustomerDetailSuccess = "Müşteri detayları getirildi!";
         public static string RentalDetailSuccess = "Kiralık detayları getirildi!";
+        public static string FailedCarImageAdd = "Resim eklenemedi!";
+        public static string AddedCarImage = "Resim eklendi!";
+        public static string DeletedCarImage = "Resim silindi!";
     }
 }

@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
+using System.Linq.Expressions;
 using Business.BusinessAspects;
 using Entities.DTOs;
 using Core.Utilities.Results;
@@ -25,6 +26,23 @@ namespace Business.Concrete
         {
             _carDal = carDal;
         }
+
+        [CacheAspect(10)]
+        public IDataResult<List<CarDetailDTO>> GetCarDetailById(int carId)
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(p => p.Id == carId));
+        }
+
+        public IDataResult<List<CarDetailDTO>> GetCarDetailBrandId(string brandName)
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(p => p.BrandName == brandName));
+        }
+
+        public IDataResult<List<CarDetailDTO>> GetCarDetailByColor(string colorName)
+        {
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(p => p.ColorName == colorName));
+        }
+
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("IProductService.Get")]
@@ -66,7 +84,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDTO>> GetAllCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetProductDetails(), Messages.CarsListed);
+            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(), Messages.CarsListed);
         }
 
         [CacheAspect(10)]
