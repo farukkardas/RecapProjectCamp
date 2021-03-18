@@ -1,4 +1,9 @@
-﻿namespace Core.Utilities.Results.Concrete
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+
+namespace Core.Utilities.Results.Concrete
 {
     public class SuccessDataResult<T>:DataResult<T>
     {
@@ -17,9 +22,6 @@
 
         }
 
-        public SuccessDataResult():base(default,true)
-        {
-                
-        }
+
     }
 }

@@ -11,6 +11,13 @@
         {
             Data = data;
         }
+
+     
+        public DataResult(T data) : base(true)
+        {
+            Data = data;
+        }
+
         public T Data { get; }
     }
 }

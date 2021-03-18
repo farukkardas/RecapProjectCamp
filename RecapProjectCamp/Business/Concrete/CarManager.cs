@@ -82,9 +82,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(), Messages.CarsListed);
         }
 
-        public IDataResult<List<CarDetailDTO>> GetAllCarDetails()
+        public IDataResult<IOrderedEnumerable<CarDetailDTO>> GetAllCarDetails()
         {
-            return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(), Messages.CarsListed);
+            return new SuccessDataResult<IOrderedEnumerable<CarDetailDTO>>(_carDal.GetCarDetails().OrderBy(c => c.Id));
         }
 
         [CacheAspect(10)]

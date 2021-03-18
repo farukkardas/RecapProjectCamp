@@ -6,11 +6,13 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Core.Utilities.Results.Concrete;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspect.Autofac.Validation;
 using Core.Aspects.Autofac.Caching;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace Business.Concrete
 {
@@ -73,8 +75,7 @@ namespace Business.Concrete
         
         public IDataResult<List<RentalDetailDto>> GetAllRentalDetails()
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails(),
-                Messages.RentalDetailSuccess);
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetAllRentalDetails());
         }
         [CacheAspect(10)]
         public IDataResult<Rental> GetById(int id)
