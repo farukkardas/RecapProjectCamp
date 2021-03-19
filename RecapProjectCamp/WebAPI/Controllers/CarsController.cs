@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace WebAPI.Controllers
 {
@@ -133,6 +134,19 @@ namespace WebAPI.Controllers
         public IActionResult UpdateCar(Car car)
         {
             var result = _carService.Update(car);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpPost("getcardetailbyfilters")]
+
+        public IActionResult GetCarDetailByFilters(CarFilterDto carFilterDto)
+        {
+            var result = _carService.GetCarDetailByFilter(carFilterDto);
             if (result.Success)
             {
                 return Ok(result);

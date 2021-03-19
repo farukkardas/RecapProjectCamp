@@ -25,5 +25,6 @@ namespace Business.Constants
         public static string FailedCarImageAdd = "Resim eklenemedi!";
         public static string AddedCarImage = "Resim eklendi!";
         public static string DeletedCarImage = "Resim silindi!";
+        public static string CarsFiltered = "Araçlar filtrelendi!";
     }
 }

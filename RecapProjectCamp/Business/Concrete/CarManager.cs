@@ -43,6 +43,12 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDTO>>(_carDal.GetCarDetails(p => p.ColorName == colorName));
         }
 
+        public IDataResult<List<CarDetailDTO>> GetCarDetailByFilter(CarFilterDto carFilterDto)
+        {
+            var carDetails = _carDal.GetCarDetailsByFilter(carFilterDto);
+            return new SuccessDataResult<List<CarDetailDTO>>(carDetails,Messages.CarsFiltered);
+        }
+
         [SecuredOperation("car.add,admin")]
         [ValidationAspect(typeof(CarValidator))]
         [CacheRemoveAspect("IProductService.Get")]
