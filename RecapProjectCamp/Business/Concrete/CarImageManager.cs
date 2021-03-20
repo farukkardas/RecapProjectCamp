@@ -50,20 +50,30 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        [CacheRemoveAspect("ICarImageService.Get")]
-        [SecuredOperation("carImages.update,admin")]
+        //[CacheRemoveAspect("ICarImageService.Get")]
+        //[SecuredOperation("carImages.update,admin")]
+        //[ValidationAspect(typeof(CarImageValidator))]
+        //public IResult Update(IFormFile file, CarImage carImage)
+        //{
+        //    IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
+        //    if (result != null)
+        //    {
+        //        return result;
+        //    }
+        //    carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
+        //    carImage.ImageDate = DateTime.Now;
+        //    _carImageDal.Update(carImage);
+        //    return new SuccessResult();
+        //}
+
+        [SecuredOperation("admin")]
         [ValidationAspect(typeof(CarImageValidator))]
         public IResult Update(IFormFile file, CarImage carImage)
         {
-            IResult result = BusinessRules.Run(CheckImageLimitExceeded(carImage.CarId));
-            if (result != null)
-            {
-                return result;
-            }
-            carImage.ImagePath = FileHelper.Update(_carImageDal.Get(p => p.Id == carImage.Id).ImagePath, file);
+            carImage.ImagePath = FileHelper.Add(file);
             carImage.ImageDate = DateTime.Now;
             _carImageDal.Update(carImage);
-            return new SuccessResult();
+            return new SuccessResult("başarılı mesajı buraya gelecek");
         }
 
         [CacheAspect]

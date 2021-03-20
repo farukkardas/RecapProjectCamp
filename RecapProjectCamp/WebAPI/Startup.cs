@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.VisualBasic;
 
 namespace WebAPI
 {
@@ -75,6 +76,14 @@ namespace WebAPI
             app.UseCors(builder => builder.WithOrigins("http://localhost:4200", "http://localhost:61198").AllowAnyHeader());
             app.UseHttpsRedirection();
 
+
+            //app.UseStaticFiles(new StaticFileOptions()
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), @"Images")),
+            //    RequestPath = new PathString("/app-images")
+            //});
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -82,9 +91,10 @@ namespace WebAPI
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads")),
-                RequestPath = "/uploads"
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "images")),
+                RequestPath = "/images"
             });
+
 
             app.UseEndpoints(endpoints =>
             {
