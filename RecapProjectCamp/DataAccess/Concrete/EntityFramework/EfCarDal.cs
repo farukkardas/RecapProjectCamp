@@ -32,8 +32,11 @@ namespace DataAccess.Concrete.Entity_Framework
                         BrandName = z.BrandName,
                         ColorName = g.ColorName,
                         ModelYear = c.ModelYear,
-                        ImagePath = ci.ImagePath
-
+                        ImagePath = ci.ImagePath,
+                        FuelEffiency = c.FuelEffiency,
+                        HorsePower = c.HorsePower,
+                        Engine = c.Engine
+                        
 
                     };
                 return filter == null ? result.ToList() : result.Where(filter).ToList();

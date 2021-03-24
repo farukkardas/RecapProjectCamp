@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Castle.DynamicProxy.Generators.Emitters;
 using Core.Entities;
 
 namespace Entities.DTOs
@@ -14,6 +15,9 @@ namespace Entities.DTOs
         public int ModelYear { get; set; }
         public string ColorName { get; set; }
         public decimal DailyPrice { get; set; }
+        public string FuelEffiency { get; set; }
+        public string Engine { get; set; }
+        public int HorsePower { get; set; }
         public DateTime CarImageDate { get; set; }
         public string ImagePath { get; set; }
 
