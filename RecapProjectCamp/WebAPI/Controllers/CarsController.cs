@@ -142,17 +142,6 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpPost("getcardetailbyfilters")]
 
-        public IActionResult GetCarDetailByFilters(CarFilterDto carFilterDto)
-        {
-            var result = _carService.GetCarDetailByFilter(carFilterDto);
-            if (result.Success)
-            {
-                return Ok(result);
-            }
-
-            return BadRequest(result);
-        }
     }
 }

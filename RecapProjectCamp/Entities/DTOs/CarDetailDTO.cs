@@ -20,6 +20,8 @@ namespace Entities.DTOs
         public int HorsePower { get; set; }
         public DateTime CarImageDate { get; set; }
         public string ImagePath { get; set; }
+        public int BrandId { get; set; }
+        public int ColorId { get; set; }
 
     }
 }

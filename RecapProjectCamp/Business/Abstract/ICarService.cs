@@ -13,18 +13,20 @@ namespace Business.Abstract
     {
         IDataResult<List<Car>> GetAll();
         IDataResult<Car> GetById(int id);
-        IDataResult<List<Car>> GetCarsByBrandId(int brandId);
-        IDataResult<List<Car>> GetCarsByColorId(int colorId);
+        IDataResult<List<CarDetailDTO>> GetCarsByColorId(int colorId);
+        IDataResult<List<CarDetailDTO>> GetCarsByBrandId(int brandId);
         IDataResult<IOrderedEnumerable<CarDetailDTO>> GetAllCarDetails();
         IDataResult<List<CarDetailDTO>> GetCarDetailById(int carId);
         IDataResult<List<CarDetailDTO>> GetCarDetailBrandId(string brandName);
         IDataResult<List<CarDetailDTO>> GetCarDetailByColor(string colorName);
-        IDataResult<List<CarDetailDTO>> GetCarDetailByFilter(CarFilterDto carFilterDto);
+
+
         IResult Add(Car car);
         IResult Update(Car car);
         IResult Delete(Car car);
         IResult AddTransactionalTest(Car car);
 
-     
+
+
     }
 }
