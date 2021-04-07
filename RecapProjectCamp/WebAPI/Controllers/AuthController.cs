@@ -6,9 +6,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entities.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
+  
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : Controller
@@ -32,12 +34,12 @@ namespace WebAPI.Controllers
             var result = _authService.CreateAccessToken(userToLogin.Data);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
 
             return BadRequest(result.Message);
         }
-
+        
         [HttpPost("register")]
         public ActionResult Register(UserForRegisterDto userForRegisterDto)
         {

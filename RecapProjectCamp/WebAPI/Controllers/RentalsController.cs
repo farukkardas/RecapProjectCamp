@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebAPI.Controllers
 {
@@ -19,7 +20,7 @@ namespace WebAPI.Controllers
         {
             _rentalService = rentalService;
         }
-
+        
         [HttpGet("getall")]
         public IActionResult GetAll()
         {
@@ -31,7 +32,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result);
         }
-
+       
         [HttpGet("getrentaldetail")]
         public IActionResult GetAllDetailDto()
         {
