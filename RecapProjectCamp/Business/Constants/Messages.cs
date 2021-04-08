@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Entities.Concrete;
 
 namespace Business.Constants
 {
@@ -8,6 +9,7 @@ namespace Business.Constants
     //static newlenmez
     public static class Messages
     {
+        public static string RentalNotAvailable = "Rental mevcut değil!";
         public static string CarsListed = "\nTüm arabalar listelendi\n";
         public static string CarAdded = "\nAraba eklendi\n";
         public static string CarDeleted = "\nAraba silindi\n";
@@ -29,7 +31,23 @@ namespace Business.Constants
         public static string UserNotFound = "Kullanıcı bulunamadı!";
         public static string PasswordError = "Şifre yanlış!";
         public static string SuccessfulLogin = "Başarılı giriş!";
-
         public static string AccessTokenCreated = "Access Token oluşturuldu!";
+        public static string creditCardAdded = "Kredi kartı eklendi!";
+        public static string creditCardDeleted = "Kredi kartı silindi!";
+        public static string RentalUndeliveredCar = "Araç kiralanamaz!";
+        public static string FindeksNotFound = "Findeks notu bulunamadı!";
+        public static string FindeksAdded = "Findeks eklendi!";
+        public static string FindeksUpdated = "Findeks güncellendi!";
+        public static string FindeksDeleted = "Findeks silindi!";
+        public static string FindeksNotEnoughForCar = "Findeks puanı kiralama yeterli değil!";
+        public static string RentalAdded = "Araç kiralandı!";
+        public static string PaymentFailed = "Ödeme başarısız!";
+        public static string PaymentSuccessful = "Ödeme başarılı!";
+        public static string OperationClaimAdded = "Rol eklendi!";
+        public static string OperationClaimUpdated = "Rol güncellendi!";
+        public static string OperationClaimDeleted = "Rol silindi!";
+        public static string UserOperationClaimAdded = "Rol üyeye eklendi!";
+        public static string UserOperationClaimUpdated = "Üyenin rolü güncellendi!";
+        public static string UserOperationClaimDeleted = "Üyenin rolü silindi!";
     }
 }

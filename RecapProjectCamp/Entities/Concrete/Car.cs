@@ -25,5 +25,6 @@ namespace Entities.Concrete
         public string FuelEffiency { get; set; }
         public string Engine { get; set; }
         public int HorsePower { get; set; }
+        public short? MinFindeksScore { get; set; }
     }
 }

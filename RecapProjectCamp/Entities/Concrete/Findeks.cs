@@ -1,15 +1,15 @@
-﻿using Core.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities;
 
 namespace Entities.Concrete
 {
-    public class Order:IEntity
+  public class Findeks:IEntity
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public DateTime OrderDate { get; set; }
-
+        public string NationalIdentity { get; set; }
+        public short Score { get; set; }
     }
 }

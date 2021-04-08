@@ -40,9 +40,13 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<AuthManager>().As<IAuthService>();
             builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
-            builder.RegisterType<OrderManager>().As<IOrderService>().SingleInstance();
-            builder.RegisterType<EfOrderDal>().As<IOrderDal>().SingleInstance();
+            builder.RegisterType<CreditCardManager>().As<ICreditCardService>().SingleInstance();
+            builder.RegisterType<EfCreditCardDal>().As<ICreditCardDal>().SingleInstance();
 
+            builder.RegisterType<FindeksManager>().As<IFindeksService>().SingleInstance();
+            builder.RegisterType<EfFindeksDal>().As<IFindeksDal>().SingleInstance();
+
+           
 
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
